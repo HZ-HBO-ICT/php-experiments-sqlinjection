@@ -10,8 +10,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'login') {
 	$passwd = $_POST['passwd'];
 
 	// The password in the DB is hashed, so we need to hash this one to compare
-	$options = ['salt' => ';sdlfkj;sdkjasfkjasd;kfaj;fkasj;'];
-	$hash = password_hash($passwd, PASSWORD_DEFAULT, $options);
+	$hash = password_hash($passwd, PASSWORD_DEFAULT);
 
 	// Open the database
 	$url = 'localhost';
