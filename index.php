@@ -6,6 +6,7 @@ session_start();
 if (isset($_POST['action']) && $_POST['action'] == 'login') {
 	// Get userid and passwd from POST data
 	$user_id = $_POST['userid'];
+	//TODO sql injectie lek oplossen
 	$passwd = $_POST['passwd'];
 
 	// The password in the DB is hashed, so we need to hash this one to compare
@@ -24,6 +25,11 @@ if (isset($_POST['action']) && $_POST['action'] == 'login') {
 
 	// Build the SQL query
 	$sql = "SELECT * FROM User WHERE Userid ='" . $user_id . "' AND Password ='" . $hash . "'";
+	
+	// TEST ONLY: echo $sql to the user
+	// echo $sql;
+	
+	
 	// Send the query to the database
 	if (!$result = $mysqli -> query($sql)) {
 		die('There was an error running the query [' . $mysqli -> error . ']');
