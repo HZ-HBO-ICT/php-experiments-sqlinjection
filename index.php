@@ -13,21 +13,17 @@ if (isset($_POST['action']) && $_POST['action'] == 'login') {
 	$hash = password_hash($passwd, PASSWORD_DEFAULT);
 
 	// Open the database
-	$url = 'localhost';
-	$userid = 'testpwd';
-	$password = 'testpwd';
-	$database = 'testpwd';
+	$url = 'db';
+	$userid = 'devuser';
+	$password = 'devpass';
+	$database = 'test_db';
 	$mysqli = new mysqli($url, $userid, $password, $database);
 	if ($mysqli -> connect_errno) {
 		die("Failed to connect to MySQL: (" . $mysqli -> connect_errno . ") " . $mysqli -> connect_error);
 	}
 
 	// Build the SQL query
-	$sql = "SELECT * FROM User WHERE Userid ='" . $user_id . "' AND Password ='" . $hash . "'";
-	
-	// TEST ONLY: echo $sql to the user
-	// echo $sql;
-	
+	$sql = "SELECT * FROM user WHERE Userid ='" . $user_id . "' AND Password ='" . $hash . "'";
 	
 	// Send the query to the database
 	if (!$result = $mysqli -> query($sql)) {

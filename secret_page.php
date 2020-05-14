@@ -20,10 +20,13 @@
 <html>
 	<head><title>Secret Page</title></head>
 	<body>
-		<h1>Welcome to the world Domination Page</h1>
+		<h1>Welcome to the World Domination Application</h1>
 		<p>
 			Status: online
 		</p>
+        <? if($msg) { ?>
+           <p><? echo $msg ?></p>
+        <? } ?>
 		<form method="post" style="width: 450px; margin-left: auto; margin-right: auto">
 			<h1>Select your action</h1>
 	  		<input type="radio" name="action" value="zombie" checked>Release zombievirus</input>
